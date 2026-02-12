@@ -3,39 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'unsafe-inline'; script-src 'none'; img-src 'self' data:; connect-src 'self';">
+    
     <title>Rhys Williams | Retrofit & Wood Fencing North Wales</title>
     <meta name="description" content="North Wales Fencing specialists. Expert Retrofit systems and Wood fencing. Call Rhys Williams at 07843 943524.">
     
     <style>
-        /* 2026 Ultra-Performance CSS */
-        :root { --p: #000; --s: #059669; --bg: #fff; --t: #000; --tl: #111; }
+        :root { --p: #000; --s: #059669; --bg: #fff; }
         * { box-sizing: border-box; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--t); margin: 0; line-height: 1.4; -webkit-font-smoothing: antialiased; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: #000; margin: 0; line-height: 1.4; -webkit-font-smoothing: antialiased; }
         
         header { position: sticky; top: 0; background: #fff; border-bottom: 3px solid #000; display: flex; justify-content: space-between; align-items: center; padding: 1rem; z-index: 20; }
         .logo { font-weight: 900; font-size: 1.3rem; text-transform: uppercase; }
-        .wa-top { background: var(--s); color: #fff; padding: 0.6rem 1rem; border-radius: 2rem; text-decoration: none; font-weight: 800; font-size: 0.9rem; border: 2px solid #047857; }
+        .wa-top { background: var(--s); color: #fff; padding: 0.6rem 1rem; border-radius: 2rem; text-decoration: none; font-weight: 800; font-size: 0.8rem; border: 2px solid #047857; }
         
-        .hero { padding: 4rem 1rem; text-align: center; background: #fff; }
-        h1 { font-size: 2.8rem; font-weight: 950; letter-spacing: -0.06em; line-height: 0.9; margin: 0; color: #000; }
-        .hero p { color: #000; font-size: 1.3rem; margin: 1.5rem 0; font-weight: 700; }
+        .hero { padding: 3rem 1rem; text-align: center; }
+        h1 { font-size: 2.8rem; font-weight: 950; letter-spacing: -0.06em; line-height: 0.9; margin: 0; }
+        .hero p { color: #000; font-size: 1.2rem; margin: 1.2rem 0; font-weight: 700; }
         
-        .grid { max-width: 460px; margin: 0 auto; padding: 0 1rem 12rem; }
-        .card { background: #fff; border: 4px solid #000; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; }
-        .card h2 { margin: 0 0 0.8rem; font-size: 1.7rem; font-weight: 900; }
-        .card p { color: #000; font-size: 1.1rem; margin-bottom: 2rem; font-weight: 500; }
+        .grid { max-width: 450px; margin: 0 auto; padding: 0 1rem 11rem; }
+        .card { background: #fff; border: 4px solid #000; border-radius: 1rem; padding: 1.8rem; margin-bottom: 1.5rem; }
+        .card h2 { margin: 0 0 0.8rem; font-size: 1.6rem; font-weight: 900; }
+        .card p { color: #000; font-size: 1.05rem; margin-bottom: 1.8rem; font-weight: 500; }
         
-        .btn { display: block; width: 100%; text-align: center; padding: 1.2rem; border-radius: 0.8rem; text-decoration: none; font-weight: 900; font-size: 1.2rem; }
+        .btn { display: block; width: 100%; text-align: center; padding: 1.1rem; border-radius: 0.8rem; text-decoration: none; font-weight: 900; font-size: 1.1rem; }
         .btn-p { background: #000; color: #fff; }
-        .btn-o { border: 4px solid #000; color: #000; margin-top: 1rem; }
+        .btn-o { border: 4px solid #000; color: #000; margin-top: 0.8rem; }
         
-        .area { background: #000; color: #fff; padding: 2rem 1rem; border-radius: 1rem; text-align: center; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
-        .tag { background: #fff; color: #000; padding: 0.4rem 0.8rem; border-radius: 0.4rem; font-size: 0.8rem; font-weight: 900; }
+        .area { background: #000; color: #fff; padding: 1.8rem 1rem; border-radius: 1rem; text-align: center; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.2rem; }
+        .tag { background: #fff; color: #000; padding: 0.4rem 0.8rem; border-radius: 0.4rem; font-size: 0.8rem; font-weight: 900; border: 1px solid #000; }
 
-        .footer { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; padding: 1.2rem; border-top: 4px solid #000; display: flex; gap: 1rem; max-width: 500px; margin: 0 auto; z-index: 30; }
-        .c-btn { flex: 1; background: #eee; color: #000; text-align: center; padding: 1.2rem; border-radius: 1rem; text-decoration: none; font-weight: 900; border: 3px solid #000; }
-        .w-btn { flex: 2; background: var(--s); color: #fff; text-align: center; padding: 1.2rem; border-radius: 1rem; text-decoration: none; font-weight: 900; border: 3px solid #047857; }
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; padding: 1.1rem; border-top: 4px solid #000; display: flex; gap: 0.8rem; max-width: 500px; margin: 0 auto; z-index: 30; }
+        .c-btn { flex: 1; background: #eee; color: #000; text-align: center; padding: 1.1rem; border-radius: 1rem; text-decoration: none; font-weight: 900; border: 3px solid #000; }
+        .w-btn { flex: 2; background: var(--s); color: #fff; text-align: center; padding: 1.1rem; border-radius: 1rem; text-decoration: none; font-weight: 900; border: 3px solid #047857; }
     </style>
 
     <script type="application/ld+json">
@@ -64,34 +65,34 @@
     <main class="grid">
         <section class="hero">
             <h1>NORTH WALES<br>FENCING</h1>
-            <p>Specialist Retrofit & Wood Systems</p>
+            <p>Expert Retrofit & Wood Systems</p>
         </section>
 
         <div class="card">
             <h2>Retrofit Systems</h2>
             <p>Upgrade existing concrete posts with modern composite or timber. Fast, clean, and built for high winds.</p>
-            <a href="https://wa.me/447843943524?text=Hi%20Rhys,%20Retrofit%20Quote%20please." class="btn btn-p">GET RETROFIT QUOTE</a>
+            <a href="https://wa.me/447843943524?text=Hi%20Rhys,%20Retrofit%20Quote%20please." class="btn btn-p">GET QUOTE</a>
         </div>
 
         <div class="card">
             <h2>Wood & Decking</h2>
-            <p>Traditional featheredge and bespoke timber designs built to survive the Welsh coast.</p>
-            <a href="https://wa.me/447843943524?text=Hi%20Rhys,%20Wood%20Quote%20please." class="btn btn-o">GET WOOD QUOTE</a>
+            <p>Traditional featheredge and bespoke timber designs built for the Welsh coast.</p>
+            <a href="https://wa.me/447843943524?text=Hi%20Rhys,%20Wood%20Quote%20please." class="btn btn-o">GET QUOTE</a>
         </div>
 
-        <section class="area" aria-label="Service Areas">
-            <strong style="text-transform: uppercase;">Covering All North Wales</strong>
+        <div class="area">
+            <strong style="text-transform: uppercase; font-size: 0.9rem;">Covering All North Wales</strong>
             <div class="tags">
                 <span class="tag">Holyhead</span><span class="tag">Bangor</span>
                 <span class="tag">Caernarfon</span><span class="tag">Llangefni</span>
-                <span class="tag">Llandudno</span><span class="tag">Gwalchmai</span>
+                <span class="tag">Llandudno</span>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer class="footer">
         <a href="tel:+447843943524" class="c-btn">CALL</a>
-        <a href="https://wa.me/447843943524" class="w-btn">WHATSAPP RHYS</a>
+        <a href="https://wa.me/447843943524" class="w-btn">WHATSAPP</a>
     </footer>
 </body>
 </html>
