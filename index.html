@@ -4,91 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Rhys Williams | Retrofit & Wood Fencing North Wales</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Expert Fencing and Decking contractor covering North Wales. Specialized in Retrofit fencing systems and traditional wood designs.">
+    
+    <style>
+        :root { --primary: #1e3a8a; --accent: #16a34a; --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --text-light: #64748b; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
+        
+        header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; }
+        .logo { font-weight: 800; letter-spacing: -0.05em; color: var(--primary); font-size: 1.25rem; text-transform: uppercase; }
+        .wa-top { background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 99px; text-decoration: none; font-size: 0.875rem; font-weight: 700; transition: transform 0.2s; }
+        
+        .hero { padding: 4rem 1.5rem 2rem; text-align: center; background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%); }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin: 0; letter-spacing: -0.03em; line-height: 1.1; }
+        .hero p { color: var(--text-light); font-size: 1.125rem; max-width: 500px; margin: 1rem auto; }
+        
+        .container { max-width: 480px; margin: 0 auto; padding: 0 1rem 10rem; }
+        .card { background: var(--card); border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+        .card h2 { margin-top: 0; font-size: 1.5rem; font-weight: 700; }
+        .card p { font-size: 0.9375rem; color: var(--text-light); margin-bottom: 1.5rem; }
+        
+        .btn-black { display: block; width: 100%; background: var(--text); color: white; text-align: center; padding: 1rem; border-radius: 1rem; text-decoration: none; font-weight: 700; transition: opacity 0.2s; }
+        .btn-outline { display: block; width: 100%; border: 2px solid var(--text); color: var(--text); text-align: center; padding: 0.875rem; border-radius: 1rem; text-decoration: none; font-weight: 700; margin-top: 1rem; }
+        
+        .badge { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 99px; margin-bottom: 0.5rem; }
+        
+        .coverage { background: #f1f5f9; padding: 2rem 1.5rem; border-radius: 2rem; margin-top: 2rem; border: 1px dashed #cbd5e1; text-align: center; }
+        .coverage h3 { font-size: 1rem; margin-top: 0; }
+        .towns { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+        .town-tag { background: white; padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 600; color: var(--text-light); border: 1px solid #e2e8f0; }
+
+        .footer-cta { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); padding: 1.25rem; border-top: 1px solid #e2e8f0; z-index: 100; }
+        .footer-flex { max-width: 480px; margin: 0 auto; display: flex; gap: 0.75rem; }
+        .call-action { flex: 1; background: #f1f5f9; color: var(--text); text-align: center; padding: 1.125rem; border-radius: 1.25rem; text-decoration: none; font-weight: 700; border: 1px solid #e2e8f0; }
+        .wa-action { flex: 2; background: var(--accent); color: white; text-align: center; padding: 1.125rem; border-radius: 1.25rem; text-decoration: none; font-weight: 700; box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.2); }
+    </style>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HomeAndConstructionBusiness",
-      "name": "Rhys Williams Decking and Fencing",
+      "name": "Rhys Williams Building & Roofing",
+      "telephone": "+447843943524",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Gwalchmai, Holyhead",
-        "addressRegion": "Gwynedd",
+        "streetAddress": "25 Maes Meurig, Gwalchmai",
+        "addressLocality": "Holyhead",
         "postalCode": "LL65 4RY",
-        "addressCountry": "UK"
+        "addressRegion": "North Wales"
       },
-      "telephone": "+44-7843943524",
-      "areaServed": ["Anglesey", "Gwynedd", "North Wales"],
-      "description": "Specialists in Retrofit Fencing and Traditional Wood Fencing. 5-star rated contractor in Holyhead."
+      "areaServed": ["Anglesey", "Gwynedd", "Conwy"],
+      "description": "Specialist contractor in Retrofit Fencing and Traditional Wood Fencing systems across North Wales.",
+      "priceRange": "££"
     }
     </script>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased font-sans">
+<body>
 
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-        <nav class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="font-bold text-lg tracking-tight text-blue-900">RHYS WILLIAMS</div>
-            <a href="https://wa.me/447930272524" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                <span>WhatsApp</span>
-            </a>
-        </nav>
+    <header>
+        <div class="logo">Rhys Williams</div>
+        <a href="https://wa.me/447843943524" class="wa-top">WhatsApp</a>
     </header>
 
-    <section class="px-4 py-12 bg-gradient-to-b from-white to-slate-50">
-        <div class="max-w-xl mx-auto text-center">
-            <span class="text-blue-600 font-bold tracking-widest text-xs uppercase">North Wales Specialist</span>
-            <h1 class="text-4xl font-extrabold mt-2 tracking-tight">Expert Fencing & Decking</h1>
-            <p class="mt-4 text-slate-600 leading-relaxed text-lg">
-                Modern **Retrofit Systems** and Traditional **Wood Fencing** across Anglesey and Gwynedd.
-            </p>
-        </div>
+    <section class="hero">
+        <h1 id="main-heading">Expert Fencing <br>& Decking</h1>
+        <p>Reliable local contractor specializing in modern Retrofit systems and high-quality Wood Fencing across North Wales.</p>
     </section>
 
-    <main class="max-w-xl mx-auto px-4 space-y-6 pb-24">
-        
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-            <div class="flex justify-between items-start mb-4">
-                <h2 class="text-xl font-bold">Retrofit Fencing</h2>
-                <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded">2026 TREND</span>
+    <main class="container">
+        <div class="card">
+            <span class="badge">VALUE CHOICE</span>
+            <h2>Retrofit Fencing</h2>
+            <p>Upgrade your old garden fence without removing concrete posts. Modern composite or timber panels installed into your existing structure. Faster, cleaner, and cheaper.</p>
+            <a href="https://wa.me/447843943524?text=Hi%20Rhys,%20I'm%20interested%20in%20a%20Retrofit%20Fencing%20quote." class="btn-black">Get Retrofit Quote</a>
+        </div>
+
+        <div class="card">
+            <span class="badge">TRADITIONAL</span>
+            <h2>Wood & Decking</h2>
+            <p>Bespoke timber fencing, featheredge panels, and custom decking designs. High-grade pressure-treated wood built to withstand the North Wales coast.</p>
+            <a href="https://wa.me/447843943524?text=Hi%20Rhys,%20I'd%20like%20a%20quote%20for%20Wood%20Fencing%20or%20Decking." class="btn-outline">Get Wood Quote</a>
+        </div>
+
+        <section class="coverage">
+            <h3>Covering All of North Wales</h3>
+            <div class="towns">
+                <span class="town-tag">Holyhead</span>
+                <span class="town-tag">Bangor</span>
+                <span class="town-tag">Caernarfon</span>
+                <span class="town-tag">Llangefni</span>
+                <span class="town-tag">Llandudno</span>
+                <span class="town-tag">Gwalchmai</span>
             </div>
-            <p class="text-sm text-slate-500 mb-4">Don't dig up your concrete posts. We install high-durability composite or timber panels into your existing pillars.</p>
-            <ul class="text-sm space-y-2 mb-6">
-                <li class="flex items-center gap-2">✅ Save 40% on labor costs</li>
-                <li class="flex items-center gap-2">✅ No garden excavation</li>
-                <li class="flex items-center gap-2">✅ 20+ Year Lifespan</li>
-            </ul>
-            <a href="https://wa.me/447930272524?text=Hi%20Rhys,%20I'm%20interested%20in%20a%20Retrofit%20Fencing%20quote." 
-               class="block w-full py-3 bg-slate-900 text-white text-center rounded-xl font-bold">Get Retrofit Quote</a>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-            <h2 class="text-xl font-bold mb-4">Traditional Wood</h2>
-            <p class="text-sm text-slate-500 mb-4">High-quality Featheredge, Hit-and-Miss, and bespoke gates built to survive North Wales weather.</p>
-            <ul class="text-sm space-y-2 mb-6">
-                <li class="flex items-center gap-2">🌲 FSC Certified Timber</li>
-                <li class="flex items-center gap-2">🔨 Pressure Treated Finish</li>
-                <li class="flex items-center gap-2">🏘️ Bespoke Gate Matching</li>
-            </ul>
-            <a href="https://wa.me/447930272524?text=Hi%20Rhys,%20I'd%20like%20a%20quote%20for%20Traditional%20Wood%20fencing." 
-               class="block w-full py-3 border-2 border-slate-900 text-slate-900 text-center rounded-xl font-bold">Traditional Quote</a>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 pt-4 text-center opacity-70">
-            <div class="text-[10px] font-mono border rounded p-2 italic">5/5 MYBUILDER RATING</div>
-            <div class="text-[10px] font-mono border rounded p-2 italic text-blue-800 underline">SYSTEMIC AI READY</div>
-        </div>
+        </section>
     </main>
 
-    <footer class="fixed bottom-0 inset-x-0 p-4 bg-gradient-to-t from-white via-white/80 to-transparent">
-        <div class="max-w-xl mx-auto flex gap-2">
-            <a href="tel:+447930272524" class="flex-1 bg-slate-100 py-4 rounded-2xl text-center font-bold text-slate-700 border border-slate-200">
-                Call Rhys
-            </a>
-            <a href="https://wa.me/447930272524" class="flex-[2] bg-green-600 py-4 rounded-2xl text-center font-bold text-white shadow-lg shadow-green-200">
-                WhatsApp Chat
-            </a>
+    <div class="footer-cta">
+        <div class="footer-flex">
+            <a href="tel:+447843943524" class="call-action" aria-label="Call Rhys Williams">Call</a>
+            <a href="https://wa.me/447843943524" class="wa-action" aria-label="WhatsApp Rhys Williams">WhatsApp Rhys</a>
         </div>
-    </footer>
+    </div>
 
 </body>
 </html>
