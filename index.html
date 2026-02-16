@@ -235,5 +235,25 @@
             <span>WhatsApp</span>
         </a>
     </div>
+     
 </body>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const banner = document.getElementById('cookie-banner');
+            const isAccepted = localStorage.getItem('cookiesAccepted');
+
+            if (!isAccepted) {
+                banner.style.display = 'block';
+            }
+
+            window.acceptCookies = function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                banner.style.display = 'none';
+            };
+
+            window.hideBanner = function() {
+                banner.style.display = 'none';
+            };
+        });
+    </script>     
 </html>
