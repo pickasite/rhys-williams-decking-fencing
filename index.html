@@ -212,11 +212,6 @@
         .hub-item::before { content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
 
         /* Card 8 (Contact) Specific Styles */
-        section[data-index="7"] { 
-            background: linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), url('finished-raised-timber-decking-balcony.jpg') no-repeat center center !important;
-            background-size: cover !important;
-            background-color: var(--white) !important;
-        }
         section[data-index="7"] .card { --card-bg: var(--white); background: var(--white); color: var(--text-main); }
         section[data-index="7"] h2, section[data-index="7"] .description { color: var(--text-main); }
         section[data-index="7"] .slider-overlay { background: linear-gradient(to top, var(--white) 20%, transparent 100%); }
@@ -494,7 +489,8 @@
                         <img src="heavy-duty-feather-edge-fencing-installation-anglesey.jpg" class="slide-img" alt="Fencing Installation">
                     </div>
                     <div class="slider-overlay"></div>
-                    <div class="logo-circle-container">RW</div>
+                    <!-- Fixed Logo: White R on Green Background -->
+                    <div class="logo-circle-container">R</div>
                 </header>
                 <div class="card-body" style="justify-content: center;">
                     <span class="rating-text">Ready to Start?</span>
@@ -540,6 +536,7 @@
             const sections = document.querySelectorAll('section');
             const dotsContainer = document.getElementById('navDots');
 
+            // Initialize dots
             sections.forEach((_, i) => {
                 const dot = document.createElement('div');
                 dot.className = `nav-dot ${i === 0 ? 'active' : ''}`;
@@ -550,6 +547,7 @@
             });
             const dots = document.querySelectorAll('.nav-dot');
 
+            // Scroll listener for animations and dots
             container.addEventListener('scroll', () => {
                 const scrollPos = container.scrollTop;
                 const height = window.innerHeight;
