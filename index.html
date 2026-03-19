@@ -3,7 +3,8 @@
 <head>
     <script>
         /** * IMMEDIATE GLOBAL ERROR HANDLER
-         * This must be the very first thing in the head to prevent ReferenceErrors.
+         * Attached to window to solve ReferenceErrors in sandboxed environments.
+         * Provides a high-quality fallback if a local file is missing.
          */
         window.handleImgError = function(img, type) {
             const fallbacks = {
@@ -203,12 +204,13 @@
 
     <main class="scroll-container" id="scrollStack">
         
+        <!-- Section 0: Hero -->
         <section data-index="0">
             <article class="card">
                 <header class="card-header-visual">
                     <div class="slider-wrapper js-slider">
-                        <img src="https://www.decking-fencing.co.uk/decking-anglesey.webp" class="slide-img active" alt="Decking" onerror="window.handleImgError(this, 'decking')">
-                        <img src="https://www.decking-fencing.co.uk/garden-fencing-1.jpeg" class="slide-img" alt="Fencing" onerror="window.handleImgError(this, 'fencing')">
+                        <img src="decking-anglesey.webp" class="slide-img active" alt="Decking" onerror="window.handleImgError(this, 'decking')">
+                        <img src="finished-raised-timber-decking-balcony.jpg" class="slide-img" alt="Balcony Decking" onerror="window.handleImgError(this, 'decking')">
                     </div>
                     <div class="slider-overlay"></div>
                     <div class="logo-circle-container">RW</div>
@@ -227,12 +229,13 @@
             </article>
         </section>
 
+        <!-- Section 1: Timber Specialisms -->
         <section data-index="1">
             <article class="card">
                 <header class="card-header-visual">
                     <div class="slider-wrapper js-slider">
-                        <img src="https://www.decking-fencing.co.uk/decking-composite-north-wales.webp" class="slide-img active" alt="Composite Decking" onerror="window.handleImgError(this, 'decking')">
-                        <img src="https://www.decking-fencing.co.uk/modrn-fencing-anglesey.jpeg" class="slide-img" alt="Fencing" onerror="window.handleImgError(this, 'fencing')">
+                        <img src="decking-composite-north-wales.webp" class="slide-img active" alt="Composite Decking" onerror="window.handleImgError(this, 'decking')">
+                        <img src="timber-garden-fence-with-gate-anglesey.jpg" class="slide-img" alt="Fencing" onerror="window.handleImgError(this, 'fencing')">
                     </div>
                     <div class="slider-overlay"></div>
                     <div class="logo-circle-container">RW</div>
@@ -257,12 +260,13 @@
             </article>
         </section>
 
+        <!-- Section 2: Landscaping -->
         <section data-index="2">
             <article class="card">
                 <header class="card-header-visual">
                     <div class="slider-wrapper js-slider">
-                        <img src="https://www.decking-fencing.co.uk/decking-north-wales.webp" class="slide-img active" alt="Landscaping" onerror="window.handleImgError(this, 'landscaping')">
-                        <img src="https://www.decking-fencing.co.uk/garden-fencing-1.jpeg" class="slide-img" alt="Fencing" onerror="window.handleImgError(this, 'fencing')">
+                        <img src="decking-north-wales.webp" class="slide-img active" alt="Landscaping" onerror="window.handleImgError(this, 'landscaping')">
+                        <img src="log-cabin-deck.webp" class="slide-img" alt="Log Cabin" onerror="window.handleImgError(this, 'decking')">
                     </div>
                     <div class="slider-overlay"></div>
                     <div class="logo-circle-container">RW</div>
@@ -287,12 +291,13 @@
             </article>
         </section>
 
+        <!-- Section 3: Core Services -->
         <section data-index="3">
             <article class="card">
                 <header class="card-header-visual">
                     <div class="slider-wrapper js-slider">
-                        <img src="https://www.decking-fencing.co.uk/caravan-decking.webp" class="slide-img active" alt="Caravan Decking" onerror="window.handleImgError(this, 'decking')">
-                        <img src="https://www.decking-fencing.co.uk/modern-fencing-composite-2.jpeg" class="slide-img" alt="Composite Fencing" onerror="window.handleImgError(this, 'fencing')">
+                        <img src="caravan-decking.webp" class="slide-img active" alt="Caravan Decking" onerror="window.handleImgError(this, 'decking')">
+                        <img src="gates-cedar-anglesey.webp" class="slide-img" alt="Cedar Gates" onerror="window.handleImgError(this, 'fencing')">
                     </div>
                     <div class="slider-overlay"></div>
                     <div class="logo-circle-container">RW</div>
@@ -319,18 +324,19 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="cta-button" onclick="goNext()">Area</button>
+                        <button class="cta-button" onclick="goNext()">Contact</button>
                     </div>
                 </div>
             </article>
         </section>
 
+        <!-- Section 7: Contact -->
         <section data-index="7">
             <article class="card">
                 <header class="card-header-visual">
                     <div class="slider-wrapper js-slider">
-                        <img src="https://www.decking-fencing.co.uk/caravan-decking.webp" class="slide-img active" alt="Decking" onerror="window.handleImgError(this, 'decking')">
-                        <img src="https://www.decking-fencing.co.uk/modrn-fencing-anglesey.jpeg" class="slide-img" alt="Fencing" onerror="window.handleImgError(this, 'fencing')">
+                        <img src="caravan-decking.webp" class="slide-img active" alt="Caravan Decking" onerror="window.handleImgError(this, 'decking')">
+                        <img src="decking-anglesey.webp" class="slide-img" alt="Contact Rhys" onerror="window.handleImgError(this, 'decking')">
                     </div>
                     <div class="slider-overlay"></div>
                     <div class="logo-circle-container" style="color: var(--slate)">RW</div>
