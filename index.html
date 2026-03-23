@@ -725,7 +725,7 @@
     function submitWhatsApp() {
         const d = getEnquiryData();
         const msg = `Hi Rhys! New project enquiry:%0A%0A*Best time for site visit:* ${d.visitTime}%0A*Project:* ${d.type}%0A*Location:* ${d.loc}%0A*Budget:* ${d.budget}%0A*Name:* ${d.name}%0A*Contact:* ${d.contact}`;
-        window.open(`https://wa.me/447712345678?text=${msg}`, '_blank');
+        window.open(`https://wa.me/447843943524?text=${msg}`, '_blank');
         showSuccess();
     }
 
@@ -733,7 +733,7 @@
         const d = getEnquiryData();
         const subject = encodeURIComponent(`Decking/Fencing Enquiry - ${d.name}`);
         const body = encodeURIComponent(`Hi Rhys,\n\nI'd like to enquire about a project:\n\nBest time for site visit: ${d.visitTime}\nProject Type: ${d.type}\nLocation: ${d.loc}\nBudget: ${d.budget}\n\nName: ${d.name}\nContact: ${d.contact}\n\nPlease get in touch to arrange a free survey.\n\nThank you!`);
-        window.location.href = `mailto:rhys@decking-fencing.co.uk?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:rhyswilliamsdecking@gmail.com?subject=${subject}&body=${body}`;
         showSuccess();
     }
 
