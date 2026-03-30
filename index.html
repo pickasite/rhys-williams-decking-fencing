@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,227 +45,827 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;600;700;800&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
    
-<style>
-    :root {
-        --canvas: #e8e0d5;
-        --white: #FFFFFF;
-        --gold: #b87c4f;
-        --gold-light: #d9a77a;
-        --espresso: #2c5e2e;
-        --cream: #FDFBF7;
-        --squircle: 32px;
-        --silk-ease: cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-    html, body {
-        height: 100svh;
-        overflow: hidden;
-    }
-    body {
-        background-color: var(--canvas);
-        font-family: 'Inter', sans-serif;
-        color: var(--espresso);
-        overscroll-behavior: none;
-    }
-
-    /* PROGRESS BAR REMOVED */
-    .progress-engine {
-        display: none !important;
-    }
-
-    .deck-container {
-        height: 100svh;
-        width: 100vw;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        scrollbar-width: thin;
-        position: relative;
-        z-index: 10;
-        -webkit-overflow-scrolling: touch;
-    }
-    .deck-container::-webkit-scrollbar {
-        width: 8px;
-        background: rgba(44,94,46,0.1);
-    }
-    .deck-container::-webkit-scrollbar-thumb {
-        background: var(--espresso);
-        border-radius: 4px;
-    }
-    .card-wrapper {
-        height: 100svh;
-        width: 100vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        scroll-snap-align: start;
-        padding: 0 14px;
-        position: relative;
-    }
-    .card {
-        width: 100%;
-        max-width: 410px;
-        height: 88svh;
-        background: var(--cream);
-        border-radius: var(--squircle);
-        border: 2px solid var(--white);
-        box-shadow: 0 0 25px rgba(44,94,46,0.2), 0 20px 40px rgba(0,0,0,0.12);
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: hidden;
-    }
-    .slider-header {
-        width: 100%;
-        height: 22%;           /* Shorter slider as requested */
-        position: relative;
-        overflow: hidden;
-        background: var(--espresso);
-        flex-shrink: 0;
-        z-index: 10;
-    }
-    .slider-track {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        touch-action: pan-x;
-    }
-    .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transform: scale(1.1);
-        transition: opacity 1s var(--silk-ease), transform 1s var(--silk-ease);
-    }
-    .slide.active {
-        opacity: 1;
-        transform: scale(1);
-    }
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.95);
-        background: var(--espresso);
-    }
-    .brand-anchor {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 100;
-        pointer-events: none;
-        width: 85px;
-        height: 85px;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border: 1.5px solid var(--white);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        box-shadow: 0 0 15px rgba(44,94,46,0.3);
-    }
-    .melt-zone {
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        width: 100%;
-        height: 45px;
-        background: linear-gradient(to bottom, transparent, var(--cream));
-        z-index: 50;
-        pointer-events: none;
-    }
-    .card-body {
-        flex: 1;
-        padding: 20px 24px 28px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        background: var(--cream);
-        gap: 14px;                    /* Slightly reduced gap */
-        position: relative;
-        z-index: 60;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-    /* Rest of your styles remain the same... */
-    /* (I'm keeping the rest unchanged for brevity, but copy everything below from your original) */
-
-    .card-body::-webkit-scrollbar {
-        width: 4px;
-    }
-    .card-body::-webkit-scrollbar-track {
-        background: rgba(44,94,46,0.05);
-        border-radius: 4px;
-    }
-    .card-body::-webkit-scrollbar-thumb {
-        background: var(--gold);
-        border-radius: 4px;
-    }
-    .text-group {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-    h1, h2 {
-        font-family: 'Playfair Display', serif;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -1px;
-        line-height: 1.1;
-        color: var(--espresso);
-    }
-    h1 {
-        font-size: clamp(2rem, 8.5vw, 2.6rem);
-        margin-bottom: 2px;
-    }
-    /* ... keep all your other existing styles from .header-two-words down to the end ... */
-</style>
+    <style>
+        :root {
+            --canvas: #e8e0d5;
+            --white: #FFFFFF;
+            --gold: #b87c4f;
+            --gold-light: #d9a77a;
+            --espresso: #2c5e2e;
+            --cream: #FDFBF7;
+            --squircle: 32px;
+            --silk-ease: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html, body {
+            height: 100svh;
+            overflow: hidden;
+        }
+        body {
+            background-color: var(--canvas);
+            font-family: 'Inter', sans-serif;
+            color: var(--espresso);
+            overscroll-behavior: none;
+        }
+        .site-watermark {
+            position: fixed; top: -25%; left: -25%; width: 150%; height: 150%;
+            z-index: 1; pointer-events: none;
+            display: flex; flex-wrap: wrap; gap: 120px; padding: 100px;
+            opacity: 0.12; transform: rotate(-15deg); user-select: none;
+        }
+        .watermark-text {
+            font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.75rem;
+            color: var(--espresso); white-space: nowrap; text-transform: uppercase; letter-spacing: 5px;
+            opacity: 0.3;
+        }
+        .progress-engine {
+            position: fixed; top: 12px; left: 8%; width: 84%;
+            display: flex; gap: 6px; height: 3px; z-index: 2000;
+        }
+        .seg { flex: 1; background: rgba(44,94,46,0.2); border-radius: 10px; overflow: hidden; }
+        .fill { height: 100%; width: 0%; background: var(--espresso); transition: width 0.1s linear; }
+        .deck-container {
+            height: 100svh;
+            width: 100vw;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: thin;
+            position: relative;
+            z-index: 10;
+            -webkit-overflow-scrolling: touch;
+        }
+        .deck-container::-webkit-scrollbar {
+            width: 8px;
+            background: rgba(44,94,46,0.1);
+        }
+        .deck-container::-webkit-scrollbar-thumb {
+            background: var(--espresso);
+            border-radius: 4px;
+        }
+        .card-wrapper {
+            height: 100svh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            padding: 0 5px;
+            position: relative;
+        }
+        .card {
+            width: 100%;
+            max-width: 410px;
+            height: 88svh;           /* Fixed for mobile - was 90dvh */
+            background: var(--cream);
+            border-radius: var(--squircle);
+            border: 2px solid var(--white);
+            box-shadow: 0 0 25px rgba(44,94,46,0.2), 0 20px 40px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .slider-header {
+            width: 100%;
+            height: 28%;
+            position: relative;
+            overflow: hidden;
+            background: var(--espresso);
+            flex-shrink: 0;
+            z-index: 10;
+        }
+        .slider-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            touch-action: pan-x;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: opacity 1s var(--silk-ease), transform 1s var(--silk-ease);
+        }
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95);
+            background: var(--espresso);
+        }
+        .brand-anchor {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            pointer-events: none;
+            width: 85px;
+            height: 85px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 0 15px rgba(44,94,46,0.3);
+        }
+        .melt-zone {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, var(--cream));
+            z-index: 50;
+            pointer-events: none;
+        }
+        .card-body {
+            flex: 1;
+            padding: 20px 24px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--cream);
+            gap: 15px;
+            position: relative;
+            z-index: 60;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .card-body::-webkit-scrollbar {
+            width: 4px;
+        }
+        .card-body::-webkit-scrollbar-track {
+            background: rgba(44,94,46,0.05);
+            border-radius: 4px;
+        }
+        .card-body::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        .text-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            color: var(--espresso);
+        }
+        h1 {
+            font-size: clamp(2rem, 8.5vw, 2.6rem);
+            margin-bottom: 2px;
+        }
+        .header-two-words {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            letter-spacing: -1px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--espresso);
+        }
+        .croeso-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+        .croeso-line {
+            height: 1.5px;
+            width: 25px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+        .croeso {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .location-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: inline-block;
+            font-size: 0.65rem;
+            margin: 6px 0;
+            letter-spacing: 4px;
+            color: var(--espresso);
+            border-top: 1.5px solid rgba(44,94,46,0.1);
+            border-bottom: 1.5px solid rgba(44,94,46,0.1);
+            padding: 6px 15px;
+        }
+        .stars-gold {
+            color: var(--gold);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        .verified-badge {
+            font-size: 0.6rem;
+            font-weight: 900;
+            color: var(--espresso);
+            background: rgba(0,0,0,0.06);
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .btn-action {
+            width: 100%;
+            padding: 18px 24px;
+            border-radius: 100px;
+            background: var(--espresso);
+            color: var(--white);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: auto;
+        }
+        .btn-action:hover {
+            transform: scale(1.02);
+            background: var(--gold);
+        }
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+        }
+        .white-box {
+            background: var(--white);
+            padding: 12px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            border: 1px solid rgba(44,94,46,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 56px;
+            text-align: center;
+            color: var(--espresso);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .luxury-tile {
+            background: var(--white);
+            padding: 16px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(184,124,79,0.15);
+            width: 100%;
+            margin: 4px 0;
+            text-align: center;
+        }
+        .luxury-tile strong {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--espresso);
+            letter-spacing: 1.5px;
+            margin-bottom: 2px;
+        }
+        .luxury-tile span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .option-tile {
+            width: 100%;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1.5px solid rgba(0,0,0,0.04);
+            margin: 4px 0;
+            text-align: left;
+        }
+        .option-tile svg {
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .option-tile div {
+            display: flex;
+            flex-direction: column;
+        }
+        .option-tile strong {
+            font-size: 0.9rem;
+            color: var(--espresso);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .option-tile span {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            font-weight: 600;
+        }
+        .concierge-tile {
+            width: 100%;
+            background: rgba(44,94,46,0.05);
+            border: 1px solid rgba(44,94,46,0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 4px 0;
+            text-align: left;
+        }
+        .concierge-tile svg {
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .concierge-tile div {
+            display: flex;
+            flex-direction: column;
+        }
+        .concierge-tile strong {
+            font-size: 0.9rem;
+            color: var(--espresso);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .concierge-tile span {
+            font-size: 0.65rem;
+            color: var(--espresso);
+            opacity: 0.7;
+            font-weight: 600;
+        }
+        .executive-perk {
+            background: var(--espresso);
+            color: var(--white);
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1.5px solid var(--gold);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        .executive-perk strong {
+            display: block;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .executive-perk span {
+            font-size: 0.6rem;
+            font-weight: 800;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .card-dark {
+            background: var(--espresso);
+            border-color: var(--white);
+        }
+        .card-dark .card-body {
+            background: transparent;
+            color: var(--white);
+        }
+        .card-dark .header-two-words {
+            color: var(--white);
+        }
+        .card-dark .melt-zone {
+            background: linear-gradient(to bottom, transparent, var(--espresso));
+        }
+        .card-dark .white-box {
+            color: var(--espresso);
+            background: var(--white);
+        }
+        .card-dark .concierge-tile {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .card-dark .concierge-tile strong {
+            color: var(--white);
+        }
+        .card-dark .concierge-tile span {
+            color: rgba(255,255,255,0.8);
+        }
+        .reviews-viewport {
+            width: 100%;
+            min-height: 210px;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .review-card-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            pointer-events: none;
+        }
+        .review-card-item.active {
+            opacity: 1;
+            position: relative;
+            pointer-events: auto;
+        }
+        .review-stars-row {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .review-text-exact {
+            font-size: 1.05rem;
+            line-height: 1.45;
+            color: var(--espresso);
+            font-weight: 700;
+            font-style: italic;
+        }
+        .review-who {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            color: var(--gold);
+            margin-top: 10px;
+            text-align: right;
+            font-size: 1.1rem;
+        }
+        .card-social {
+            background: var(--espresso) !important;
+            border-color: var(--white);
+        }
+        .card-social .card-body {
+            background: transparent;
+            color: var(--cream);
+            padding: 45px 24px;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        .card-watermark {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            z-index: 1;
+            pointer-events: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            padding: 40px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            user-select: none;
+        }
+        .card-watermark span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.6rem;
+            color: var(--white);
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .social-logo-top {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            margin-bottom: 25px;
+            border: 2.5px solid var(--white);
+            box-shadow: 0 0 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 20;
+        }
+        .qr-square-wrapper {
+            width: 165px;
+            height: 165px;
+            background: var(--cream);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 20;
+        }
+        .qr-square-wrapper img {
+            width: 125px;
+            height: 125px;
+        }
+        .card-social h2 {
+            color: var(--white);
+            font-size: 1.9rem;
+            margin: 0;
+            position: relative;
+            z-index: 20;
+        }
+        .social-prompt {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-light);
+            position: relative;
+            z-index: 20;
+        }
+        .social-hub-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 10px;
+            position: relative;
+            z-index: 20;
+        }
+        .social-circle {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .social-circle:hover {
+            transform: scale(1.1);
+        }
+        .social-circle svg {
+            width: 28px;
+            height: 28px;
+        }
+        .form-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--espresso);
+            opacity: 0.15;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            opacity: 1;
+            transform: scale(1.3);
+            background: var(--gold);
+        }
+        .step-label {
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        .form-field {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 8px;
+        }
+        .form-label {
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--espresso);
+            opacity: 0.7;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1.5px solid rgba(44,94,46,0.12);
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--espresso);
+            background: var(--white);
+        }
+        .form-step {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            animation: slideIn 0.4s ease-out;
+        }
+        .form-step.active {
+            display: flex;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .form-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 15px;
+            gap: 12px;
+        }
+        .nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .back-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1.5px solid rgba(44,94,46,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .back-arrow:hover {
+            background: var(--gold-light);
+        }
+        .final-actions {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+        .final-actions.active {
+            display: flex;
+        }
+        .btn-wa {
+            background: #25D366 !important;
+            color: white !important;
+        }
+        .btn-email {
+            background: var(--espresso) !important;
+            color: white !important;
+        }
+        .success-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        .cookie-consent {
+            position: fixed;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            background: var(--espresso);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            z-index: 2000;
+            font-size: 12px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        .cookie-consent button {
+            background: var(--gold);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--espresso);
+        }
+        .cookie-consent a {
+            color: var(--gold-light);
+        }
+        .site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(44,94,46,0.95);
+            backdrop-filter: blur(8px);
+            padding: 6px 12px;
+            text-align: center;
+            font-size: 10px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            z-index: 1000;
+        }
+        .site-footer a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+        @media (max-width: 380px) {
+            .cookie-consent {
+                font-size: 10px;
+                padding: 8px 12px;
+                bottom: 45px;
+            }
+            .site-footer {
+                font-size: 8px;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="site-watermark" id="wmContainer"></div>
 <div class="progress-engine" id="pEng"></div>
 <div class="deck-container" id="mainDeck">
-    <!-- CARD 1: WELCOME -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="brand-anchor"><div style="font-size:2rem; font-weight:900;">RW</div></div><div class="slider-track"><div class="slide active"><img src="modern-decking-service-anglesey.png" alt="Premium decking North Wales"></div><div class="slide"><img src="small-garden-fencing.png" alt="Modern decking service Anglesey"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><div class="croeso-wrap"><div class="croeso-line"></div><div class="croeso">Croeso • Welcome</div><div class="croeso-line"></div></div><div class="stars-gold">★★★★★ <span class="verified-badge">4.9 ★ 47 Reviews</span></div><h1>Decking & Fencing</h1><div class="location-badge">Anglesey • Gwynedd • Conwy • North Wales</div><p>Master craftsman specializing in coastal timber systems, shepherd huts, garden rooms, and complete landscaping across North Wales. 40+ years local trust.</p><p style="margin-top: 10px;">✓ Free site surveys<br>✓ Competitive quotes<br>✓ Fully insured & certified</p></div><button class="btn-action" onclick="goToCard(9)">Free Survey →</button></div></div></div>
+<!-- CARD 1: WELCOME -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="brand-anchor"><div style="font-size:2rem; font-weight:900;">RW</div></div><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/modern-decking-service-anglesey.png" alt="Premium decking North Wales"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/small-garden-fencing.png" alt="Modern decking service Anglesey"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><div class="croeso-wrap"><div class="croeso-line"></div><div class="croeso">Croeso • Welcome</div><div class="croeso-line"></div></div><div class="stars-gold">★★★★★ <span class="verified-badge">4.9 ★ 47 Reviews</span></div><h1>Decking & Fencing</h1><div class="location-badge">Anglesey • Gwynedd • Conwy • North Wales</div><p>Master craftsman specializing in coastal timber systems, shepherd huts, garden rooms, and complete landscaping across North Wales. 40+ years local trust.</p><p style="margin-top: 10px;">✓ Free site surveys<br>✓ Competitive quotes<br>✓ Fully insured & certified</p></div><button class="btn-action" onclick="goToCard(9)">Free Survey →</button></div></div></div>
 
-    <!-- CARD 2: PREMIUM DECKING -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="primium-decking-north-wales.png" alt="Premium timber decking"></div><div class="slide"><img src="composite0decking-serice-project8.png" alt="Composite decking service"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 class="header-two-words">Premium Decking</h2><p style="font-size: 0.82rem;">High-durability timber engineered for coastal environments:</p><div class="grid-2x2"><div class="white-box">Coastal Grade Timber</div><div class="white-box">Composite Decking</div><div class="white-box">Raised Decks</div><div class="white-box">Balconies</div><div class="white-box">Wraparound</div><div class="white-box">Hot Tub Platforms</div></div><p style="font-size: 0.75rem; margin-top: 10px;">✓ 20+ year guarantee on composite<br>✓ Anti-slip surface for safety<br>✓ Low maintenance options available<br>✓ Installation within 2-3 weeks</p></div><button class="btn-action" onclick="goToCard(9)">Get a Quote →</button></div></div></div>
+<!-- CARD 2: PREMIUM DECKING -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/primium-decking-north-wales.png" alt="Premium timber decking"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/composite0decking-serice-project8.png" alt="Composite decking service"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 class="header-two-words">Premium Decking</h2><p style="font-size: 0.82rem;">High-durability timber engineered for coastal environments:</p><div class="grid-2x2"><div class="white-box">Coastal Grade Timber</div><div class="white-box">Composite Decking</div><div class="white-box">Raised Decks</div><div class="white-box">Balconies</div><div class="white-box">Wraparound</div><div class="white-box">Hot Tub Platforms</div></div><p style="font-size: 0.75rem; margin-top: 10px;">✓ 20+ year guarantee on composite<br>✓ Anti-slip surface for safety<br>✓ Low maintenance options available<br>✓ Installation within 2-3 weeks</p></div><button class="btn-action" onclick="goToCard(9)">Get a Quote →</button></div></div></div>
 
-    <!-- CARD 3: STORM-PROOF FENCING -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="Feather-Edge-Fencing-service.png" alt="Garden fencing installation"></div><div class="slide"><img src="Feather-Edge-Fencing-service.png" alt="Anglesey garden fencing"></div><div class="slide"><img src="cedar-gates-north-wales-project6.png" alt="Modern wood fencing Anglesey"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 style="font-size: 1.7rem;">Storm-Proof Fencing</h2><p>Built to withstand high coastal winds. Complete garden privacy solutions.</p><div class="luxury-tile"><strong>Feather Edge Fencing</strong><span>Heavy duty • Coastal wind rated</span></div><div class="luxury-tile"><strong>Slat Screens & Gates</strong><span>Contemporary privacy • Bespoke design</span></div><div class="luxury-tile"><strong>Cedar & Hardwood</strong><span>Premium materials • Natural beauty</span></div><p style="margin-top: 8px;">All fencing comes with 10-year guarantee against rot and decay.</p></div><button class="btn-action" onclick="goToCard(9)">Explore Options →</button></div></div></div>
+<!-- CARD 3: STORM-PROOF FENCING -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/Feather-Edge-Fencing-service.png" alt="Garden fencing installation"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/Feather-Edge-Fencing-service.png" alt="Anglesey garden fencing"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/cedar-gates-north-wales-project6.png" alt="Modern wood fencing Anglesey"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 style="font-size: 1.7rem;">Storm-Proof Fencing</h2><p>Built to withstand high coastal winds. Complete garden privacy solutions.</p><div class="luxury-tile"><strong>Feather Edge Fencing</strong><span>Heavy duty • Coastal wind rated</span></div><div class="luxury-tile"><strong>Slat Screens & Gates</strong><span>Contemporary privacy • Bespoke design</span></div><div class="luxury-tile"><strong>Cedar & Hardwood</strong><span>Premium materials • Natural beauty</span></div><p style="margin-top: 8px;">All fencing comes with 10-year guarantee against rot and decay.</p></div><button class="btn-action" onclick="goToCard(9)">Explore Options →</button></div></div></div>
 
-    <!-- CARD 4: SHEPHERD HUTS & GARDEN ROOMS -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="bespoke-shepard-hut-north-wales.png" alt="Bespoke shepherd hut"></div><div class="slide"><img src="garden-sheds-anglesey.png" alt="Garden sheds Anglesey"></div><div class="slide"><img src="garden-pub-bespoke-shed-north-wales.png" alt="Garden pub bespoke shed"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">Shepherd Huts & Garden Rooms</h2><div style="height: 1.5px; width: 50px; background: var(--gold); margin: 8px auto 15px;"></div><div class="grid-2x2" style="gap: 12px;"><div class="white-box">Shepherd Huts</div><div class="white-box">Garden Rooms</div><div class="white-box">Home Offices</div><div class="white-box">Glamping Pods</div></div><div class="executive-perk"><strong>Free Site Survey</strong><span>Bespoke design • Fully insulated • Turnkey</span></div><p style="font-size: 0.7rem; margin-top: 10px;">Electric, insulation & interior finishing included • Planning permission assistance available</p></div><button class="btn-action" onclick="goToCard(9)">Enquire →</button></div></div></div>
+<!-- CARD 4: SHEPHERD HUTS & GARDEN ROOMS -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/bespoke-shepard-hut-north-wales.png" alt="Bespoke shepherd hut"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/garden-sheds-anglesey.png" alt="Garden sheds Anglesey"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/garden-pub-bespoke-shed-north-wales.png" alt="Garden pub bespoke shed"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 style="font-family: 'Playfair Display', serif; font-size: 2rem;">Shepherd Huts & Garden Rooms</h2><div style="height: 1.5px; width: 50px; background: var(--gold); margin: 8px auto 15px;"></div><div class="grid-2x2" style="gap: 12px;"><div class="white-box">Shepherd Huts</div><div class="white-box">Garden Rooms</div><div class="white-box">Home Offices</div><div class="white-box">Glamping Pods</div></div><div class="executive-perk"><strong>Free Site Survey</strong><span>Bespoke design • Fully insulated • Turnkey</span></div><p style="font-size: 0.7rem; margin-top: 10px;">Electric, insulation & interior finishing included • Planning permission assistance available</p></div><button class="btn-action" onclick="goToCard(9)">Enquire →</button></div></div></div>
 
-    <!-- CARD 5: PERGOLAS & GARDEN STRUCTURES (DARK) -->
-    <div class="card-wrapper"><div class="card card-dark"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="paragolas-services-north-wales.jpg" alt="Bespoke wooden stables"></div><div class="slide"><img src="bespoke-wooden-stables-project2.png" alt="High level decking"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 class="header-two-words">Pergolas & Garden Structures</h2><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/></svg><div><strong>Pergolas</strong><span>Contemporary • Traditional • Bespoke sizes</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/></svg><div><strong>Gazebos & Shelters</strong><span>Outdoor entertaining • Garden focal points</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h20v14H2zM8 21h8"/></svg><div><strong>Arbors & Archways</strong><span>Entrance features • Climbing plants</span></div></div><p style="margin-top: 8px;">Add lighting, seating, or retractable canopies • Made from pressure-treated timber</p></div><button class="btn-action" onclick="goToCard(9)">Explore Garden Structures →</button></div></div></div>
+<!-- CARD 5: PERGOLAS & GARDEN STRUCTURES (DARK) -->
+<div class="card-wrapper"><div class="card card-dark"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/paragolas-services-north-wales.jpg" alt="Bespoke wooden stables"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/bespoke-wooden-stables-project2.png" alt="High level decking"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 class="header-two-words">Pergolas & Garden Structures</h2><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/></svg><div><strong>Pergolas</strong><span>Contemporary • Traditional • Bespoke sizes</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/></svg><div><strong>Gazebos & Shelters</strong><span>Outdoor entertaining • Garden focal points</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h20v14H2zM8 21h8"/></svg><div><strong>Arbors & Archways</strong><span>Entrance features • Climbing plants</span></div></div><p style="margin-top: 8px;">Add lighting, seating, or retractable canopies • Made from pressure-treated timber</p></div><button class="btn-action" onclick="goToCard(9)">Explore Garden Structures →</button></div></div></div>
 
-    <!-- CARD 6: CARAVAN PARKS & LODGES -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="lodgedecking-service-north-wales.png" alt="Caravan decking service"></div><div class="slide"><img src="holiday-let-decking-wood2.png" alt="Holiday let decking wood"></div><div class="slide"><img src="high-level-decking.png" alt="High level decking service"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2>Caravan Parks & Lodges</h2><div style="height: 1.5px; width: 40px; background: var(--gold); margin: 5px auto 12px;"></div><div class="option-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/></svg><div><strong>Caravan Decking</strong><span>Raised platforms • Steps • Balconies</span></div></div><div class="option-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 8h6"/></svg><div><strong>Lodge Decking</strong><span>Wrap-around • Covered • Hot tub ready</span></div></div><div class="option-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12H4M12 4v16"/></svg><div><strong>Holiday Home Solutions</strong><span>Complete outdoor living packages</span></div></div><p style="margin-top: 8px;">Working with multiple holiday parks across North Wales • Park-approved installations</p></div><button class="btn-action" onclick="goToCard(9)">Get a Quote →</button></div></div></div>
+<!-- CARD 6: CARAVAN PARKS & LODGES -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/lodgedecking-service-north-wales.png" alt="Caravan decking service"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/holiday-let-decking-wood2.png" alt="Holiday let decking wood"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/high-level-decking.png" alt="High level decking service"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2>Caravan Parks & Lodges</h2><div style="height: 1.5px; width: 40px; background: var(--gold); margin: 5px auto 12px;"></div><div class="option-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/></svg><div><strong>Caravan Decking</strong><span>Raised platforms • Steps • Balconies</span></div></div><div class="option-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M9 8h6"/></svg><div><strong>Lodge Decking</strong><span>Wrap-around • Covered • Hot tub ready</span></div></div><div class="option-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12H4M12 4v16"/></svg><div><strong>Holiday Home Solutions</strong><span>Complete outdoor living packages</span></div></div><p style="margin-top: 8px;">Working with multiple holiday parks across North Wales • Park-approved installations</p></div><button class="btn-action" onclick="goToCard(9)">Get a Quote →</button></div></div></div>
 
-    <!-- CARD 7: SERVICE AREAS (DARK) -->
-    <div class="card-wrapper"><div class="card card-dark"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="anglese-north-wales-decking-fencing-service.jpg" alt="North Wales"></div><div class="slide"><img src="garden-fencing-1.jpeg" alt="Anglesey"></div><div class="slide"><img src="garden-fencing-2.jpeg" alt="Gwynedd"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 class="header-two-words">Service Areas</h2><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><div><strong>Anglesey</strong><span>Holyhead • Gwalchmai • Beaumaris • Amlwch</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/></svg><div><strong>Gwynedd</strong><span>Bangor • Caernarfon • Porthmadog • Betws-y-Coed</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5c-.55 0-1-.45-1-1V5c0-1.1.9-2 2-2h7c1.1 0 2 .9 2 2v12c0 .55-.45 1-1 1H15c-.55 0-1-.45-1-1v-2.34"/></svg><div><strong>Conwy</strong><span>Llandudno • Colwyn Bay • Conwy Town • Penmaenmawr</span></div></div><p style="font-size: 0.65rem; margin-top: 10px;">Free site survey across all areas • 40+ years local knowledge • Same-day quotes available</p></div></div></div></div>
+<!-- CARD 7: SERVICE AREAS (DARK) -->
+<div class="card-wrapper"><div class="card card-dark"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/anglese-north-wales-decking-fencing-service.jpg" alt="North Wales"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/garden-fencing-1.jpeg" alt="Anglesey"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/garden-fencing-2.jpeg" alt="Gwynedd"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 class="header-two-words">Service Areas</h2><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><div><strong>Anglesey</strong><span>Holyhead • Gwalchmai • Beaumaris • Amlwch</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/></svg><div><strong>Gwynedd</strong><span>Bangor • Caernarfon • Porthmadog • Betws-y-Coed</span></div></div><div class="concierge-tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5c-.55 0-1-.45-1-1V5c0-1.1.9-2 2-2h7c1.1 0 2 .9 2 2v12c0 .55-.45 1-1 1H15c-.55 0-1-.45-1-1v-2.34"/></svg><div><strong>Conwy</strong><span>Llandudno • Colwyn Bay • Conwy Town • Penmaenmawr</span></div></div><p style="font-size: 0.65rem; margin-top: 10px;">Free site survey across all areas • 40+ years local knowledge • Same-day quotes available</p></div></div></div></div>
 
-    <!-- CARD 8: REVIEWS -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="cedar-gates-north-wales-project6.png" alt="Cedar gates North Wales"></div><div class="slide"><img src="small-garden-fencing.png" alt="Small garden fencing"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 style="font-size: 1.3rem;">Client Feedback</h2><div class="reviews-viewport"><div class="review-card-item active"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"Exceptional attention to detail on our shepherd hut in Gwalchmai. Rhys transformed our garden into a stunning outdoor retreat."</p><span class="review-who">— The Williams Family, Gwalchmai</span></div><div class="review-card-item"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"The composite decking has weathered the winter storms perfectly. Professional from start to finish. Highly recommend!"</p><span class="review-who">— Sarah, Llandudno</span></div><div class="review-card-item"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"Replaced our old fencing with heavy-duty feather edge. Quality workmanship and fair pricing. Will use again for our garden room."</p><span class="review-who">— David, Bangor</span></div><div class="review-card-item"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"The team built us a stunning pergola with integrated lighting. Perfect for entertaining. Couldn't be happier!"</p><span class="review-who">— Emma, Conwy</span></div></div><p style="margin-top: 8px;">⭐ 5 average from 71 verified reviews on mybuilder</p></div><button class="btn-action" onclick="goToCard(9)">Free Quote →</button></div></div></div>
+<!-- CARD 8: REVIEWS -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/cedar-gates-north-wales-project6.png" alt="Cedar gates North Wales"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/small-garden-fencing.png" alt="Small garden fencing"></div></div><div class="melt-zone"></div></header><div class="card-body"><div class="text-group"><h2 style="font-size: 1.3rem;">Client Feedback</h2><div class="reviews-viewport"><div class="review-card-item active"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"Exceptional attention to detail on our shepherd hut in Gwalchmai. Rhys transformed our garden into a stunning outdoor retreat."</p><span class="review-who">— The Williams Family, Gwalchmai</span></div><div class="review-card-item"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"The composite decking has weathered the winter storms perfectly. Professional from start to finish. Highly recommend!"</p><span class="review-who">— Sarah, Llandudno</span></div><div class="review-card-item"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"Replaced our old fencing with heavy-duty feather edge. Quality workmanship and fair pricing. Will use again for our garden room."</p><span class="review-who">— David, Bangor</span></div><div class="review-card-item"><div class="review-stars-row">★★★★★</div><p class="review-text-exact">"The team built us a stunning pergola with integrated lighting. Perfect for entertaining. Couldn't be happier!"</p><span class="review-who">— Emma, Conwy</span></div></div><p style="margin-top: 8px;">⭐ 5 average from 71 verified reviews on mybuilder</p></div><button class="btn-action" onclick="goToCard(9)">Free Quote →</button></div></div></div>
 
-   <!-- CARD 9: ENQUIRY FORM -->
-    <div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="bespoke-shepard-hut-north-wales.png" alt="Contact us"></div><div class="slide"><img src="modern-decking-service-anglesey.png" alt="Free survey"></div></div><div class="melt-zone"></div></header><div class="card-body" id="formCardBody"><div class="success-state" id="formSuccess"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><h2 style="font-size: 1.6rem;">Enquiry Sent</h2><p>Diolch! We'll be in touch within 24 hours to arrange your free site survey.</p><button class="btn-action" onclick="resetForm()">Back to Start</button></div><div class="text-group" id="formContent"><div class="form-progress"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div><div class="dot" id="dot3"></div><span class="step-label" id="stepCounter">Step 1 of 3</span></div><h2 id="formHeadline" style="font-size: 1.4rem;">Tell us about your project</h2><div class="form-step active" id="step1"><div class="form-field"><label class="form-label">Best time for site visit</label><input type="text" class="form-input" id="fDate" placeholder="e.g. Weekday mornings, After 4pm, Weekend..."></div><div class="form-field"><label class="form-label">Project Type</label><input type="text" class="form-input" id="fType" placeholder="Decking, Fencing, Shepherd Hut, Garden Room..."></div></div><div class="form-step" id="step2"><div class="form-field"><label class="form-label">Property Location</label><input type="text" class="form-input" id="fLoc" placeholder="e.g. Anglesey, Gwalchmai, Bangor..."></div><div class="form-field"><label class="form-label">Estimated Budget (optional)</label><input type="text" class="form-input" id="fGuests" placeholder="e.g. £2,000 - £5,000"></div></div><div class="form-step" id="step3"><div class="form-field"><label class="form-label">Your Name</label><input type="text" class="form-input" id="fName" placeholder="Full Name"></div><div class="form-field"><label class="form-label">Contact Details</label><input type="text" class="form-input" id="fContact" placeholder="Phone or Email"></div></div></div><div class="form-nav" id="formNav"><div class="nav-row" id="standardNav"><div class="back-arrow" id="backBtn" onclick="prevStep()" style="visibility:hidden;"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div><button class="btn-action" id="nextBtn" onclick="nextStep()" style="width: calc(100% - 65px);">Next Step</button></div><div class="final-actions" id="finalActions"><button class="btn-action btn-wa" onclick="submitWhatsApp()">Send via WhatsApp</button><button class="btn-action btn-email" onclick="submitEmail()">Send via Email</button><a href="javascript:void(0)" style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-top: 5px; color: var(--espresso); opacity: 0.5;" onclick="prevStep()">Go Back</a></div></div></div></div></div>
-    <!-- CARD 10: SOCIAL -->
-    <div class="card-wrapper"><div class="card card-social"><div class="card-watermark" id="cardWM"></div><div class="card-body"><div class="social-logo-top" style="background: white; display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;"><div style="font-size:2rem; font-weight:900; color: #2c5e2e;">RW</div></div><p class="social-prompt">View our portfolio</p><div class="qr-square-wrapper"><img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://decking-fencing.co.uk/portfolio" alt="QR code to view portfolio"></div><h2>Follow Our Work</h2><div class="social-hub-row"><a href="https://www.facebook.com/rhyswilliamsdecking" target="_blank" class="social-circle fb-icon" style="background: white; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%;"><svg width="28" height="28" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/rhyswilliamsdecking" target="_blank" class="social-circle ig-icon" style="background: white; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%;"><svg width="28" height="28" viewBox="0 0 24 24" fill="#E4405F"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 7.536c-2.467 0-4.464 1.997-4.464 4.464 0 2.467 1.997 4.464 4.464 4.464 2.467 0 4.464-1.997 4.464-4.464 0-2.467-1.997-4.464-4.464-4.464z"/></svg></a></div><p style="margin-top: 15px; font-size: 0.7rem;">📸 See our latest projects and get inspiration for your outdoor space</p></div></div></div>
+<!-- CARD 9: ENQUIRY FORM -->
+<div class="card-wrapper"><div class="card"><header class="slider-header"><div class="slider-track"><div class="slide active"><img src="https://decking-fencing.co.uk/images/bespoke-shepard-hut-north-wales.png" alt="Contact us"></div><div class="slide"><img src="https://decking-fencing.co.uk/images/modern-decking-service-anglesey.png" alt="Free survey"></div></div><div class="melt-zone"></div></header><div class="card-body" id="formCardBody"><div class="success-state" id="formSuccess"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><h2 style="font-size: 1.6rem;">Enquiry Sent</h2><p>Diolch! We'll be in touch within 24 hours to arrange your free site survey.</p><button class="btn-action" onclick="resetForm()">Back to Start</button></div><div class="text-group" id="formContent"><div class="form-progress"><div class="dot active" id="dot1"></div><div class="dot" id="dot2"></div><div class="dot" id="dot3"></div><span class="step-label" id="stepCounter">Step 1 of 3</span></div><h2 id="formHeadline" style="font-size: 1.4rem;">Tell us about your project</h2><div class="form-step active" id="step1"><div class="form-field"><label class="form-label">Best time for site visit</label><input type="text" class="form-input" id="fDate" placeholder="e.g. Weekday mornings, After 4pm, Weekend..."></div><div class="form-field"><label class="form-label">Project Type</label><input type="text" class="form-input" id="fType" placeholder="Decking, Fencing, Shepherd Hut, Garden Room..."></div></div><div class="form-step" id="step2"><div class="form-field"><label class="form-label">Property Location</label><input type="text" class="form-input" id="fLoc" placeholder="e.g. Anglesey, Gwalchmai, Bangor..."></div><div class="form-field"><label class="form-label">Estimated Budget (optional)</label><input type="text" class="form-input" id="fGuests" placeholder="e.g. £2,000 - £5,000"></div></div><div class="form-step" id="step3"><div class="form-field"><label class="form-label">Your Name</label><input type="text" class="form-input" id="fName" placeholder="Full Name"></div><div class="form-field"><label class="form-label">Contact Details</label><input type="text" class="form-input" id="fContact" placeholder="Phone or Email"></div></div></div><div class="form-nav" id="formNav"><div class="nav-row" id="standardNav"><div class="back-arrow" id="backBtn" onclick="prevStep()" style="visibility:hidden;"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></div><button class="btn-action" id="nextBtn" onclick="nextStep()" style="width: calc(100% - 65px);">Next Step</button></div><div class="final-actions" id="finalActions"><button class="btn-action btn-wa" onclick="submitWhatsApp()">Send via WhatsApp</button><button class="btn-action btn-email" onclick="submitEmail()">Send via Email</button><a href="javascript:void(0)" style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; margin-top: 5px; color: var(--espresso); opacity: 0.5;" onclick="prevStep()">Go Back</a></div></div></div></div></div>
+
+<!-- CARD 10: SOCIAL -->
+<div class="card-wrapper"><div class="card card-social"><div class="card-watermark" id="cardWM"></div><div class="card-body"><div class="social-logo-top" style="background: white; display: flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;"><div style="font-size:2rem; font-weight:900; color: #2c5e2e;">RW</div></div><p class="social-prompt">View our portfolio</p><div class="qr-square-wrapper"><img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://decking-fencing.co.uk/portfolio" alt="QR code to view portfolio"></div><h2>Follow Our Work</h2><div class="social-hub-row"><a href="https://www.facebook.com/rhyswilliamsdecking" target="_blank" class="social-circle fb-icon" style="background: white; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%;"><svg width="28" height="28" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/rhyswilliamsdecking" target="_blank" class="social-circle ig-icon" style="background: white; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%;"><svg width="28" height="28" viewBox="0 0 24 24" fill="#E4405F"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 7.536c-2.467 0-4.464 1.997-4.464 4.464 0 2.467 1.997 4.464 4.464 4.464 2.467 0 4.464-1.997 4.464-4.464 0-2.467-1.997-4.464-4.464-4.464z"/></svg></a></div><p style="margin-top: 15px; font-size: 0.7rem;">📸 See our latest projects and get inspiration for your outdoor space</p></div></div></div>
     <div class="cookie-consent" id="cookieConsent">
         <span>🍪 We use cookies to improve your experience. By using our site, you accept our <a href="#">cookie policy</a>.</span>
         <button onclick="acceptCookies()">Accept</button>
     </div>
-
     <script>
         function acceptCookies() {
             document.getElementById('cookieConsent').style.display = 'none';
